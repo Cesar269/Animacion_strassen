@@ -1,0 +1,1 @@
+Animación del procedimiento de multiplicacion de matrices por el metodo de strassen que es más eficiente que el común.
