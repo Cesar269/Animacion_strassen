@@ -1,7 +1,8 @@
+//esta será de ayuda para ir contruyendo la matrices que se ocuparan en el programa
 export default class Matriz{
 
 
-
+    //constructor para construir de principio la matriz
     constructor(filas,columnas,isAleatorio){
         this.filas = filas;
         this.columnas = columnas;
@@ -26,7 +27,7 @@ export default class Matriz{
     normal(){
         const m = [];
         for (let i = 0; i < this.columnas; i++) {
-            m[i] = [];
+            m[i]=[]
             for (let j = 0; j < this.filas; j++) {
                 m[i][j] = 0;
             }

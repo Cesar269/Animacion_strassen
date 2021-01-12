@@ -13,42 +13,34 @@
 
 <body>
     <div class="alert alert-danger my-3 mx-3" role="alert">
-        <b>RECUERDA</b> que las dimensiones de la matriz A y B deben ser las mismas y deben ser cuadradas
+        <b>RECUERDA</b> que las dimensiones de la matriz A y B deben ser las mismas.
     </div>
     <label>Ingresa la dimesión que buscas de la matriz</label>
     <input class="tamano" type="number" />
-    <button class="btn btn-danger start">start</button>
+    <button class="btn btn-info generar">Generar matriz</button>
+    <button class="btn btn-dark aleatorio">llenar random</button>
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-6">
-
                 <h3>Matriz [A]</h3>
-                <table class="matrizA">
-
+                <table class="matrizA">                
                 </table>
-
-
-
             </div>
             <div class="col-sm-6">
-
                 <h3>
                     Matriz [B]
                 </h3>
-                <table class="matrizB">
-
-                </table>
-
-
-
+                <table class="matrizB">   
+                </table>    
             </div>
-
         </div>
     </div>
+    <br>
+    <button class="btn btn-danger start">Multiplicar</button>
     <div class="container mt-5">
         <h3>Matriz C</h3>
         <table class="matrizC">
-
+            
         </table>
     </div>
     <script src="./javascript/index.js" type="module"></script>

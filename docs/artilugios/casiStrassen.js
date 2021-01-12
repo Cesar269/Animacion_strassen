@@ -1,5 +1,5 @@
 
-import Matriz from "./Matriz.js"
+import Matriz from "../javascript/Matriz.js"
 export default class Strassen {
 
 

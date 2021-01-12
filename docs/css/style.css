@@ -2,8 +2,5 @@ body{
     background-color: rgb(192, 199, 196);
 }
 input{
-    width: 8vw;
-}
-.tamano{
-    width: 10vw;
+    width: 40px;
 }

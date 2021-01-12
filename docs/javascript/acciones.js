@@ -1,9 +1,9 @@
 import Matriz from "./Matriz.js"
 //import Strassen from "./casiStrassen.js"
 import isStrassen from "./isStrassen.js"
-export const recibeMatriz = (nodo,n) => {
+export const muestraMatriz = (nodo,n,aleatorio) => {
     receteaMatriz(nodo);
-    const matriz = new Matriz(n, n, true);
+    const matriz = new Matriz(n, n, aleatorio);
     const miMatriz = matriz.getMatriz();
     //maquetar matriz
     for (let i = 0; i < n; i++) {
@@ -27,7 +27,6 @@ export const recibeMatriz = (nodo,n) => {
 export const start = (matrizA,matrizB)=>{
     
     const c = new isStrassen();
-    
     const result =c.strassen(matrizA,matrizB);
     return result;
 }
@@ -35,15 +34,16 @@ export const imprimeResultado = (nodo,matriz,n)=>{
     receteaMatriz(nodo);
     //maquetar matriz
     for (let i = 0; i < n; i++) {
-        let newTd = document.createElement("td");
-        nodo.appendChild(newTd)
+        let newTr = document.createElement("tr");
+        nodo.appendChild(newTr)
         for (let j = 0; j < n; j++) {
-            let newtr = document.createElement("tr")
-            newtr.textContent = matriz[j][i];   
-            newTd.appendChild(newtr);
+            let newtd = document.createElement("td")
+            newtd.textContent = matriz[i][j].toString();   
+            newTr.appendChild(newtd);
         }
     }
 };
+
 const receteaMatriz = (nodo) => {
     while (nodo.firstChild) {
         nodo.removeChild(nodo.firstChild);
