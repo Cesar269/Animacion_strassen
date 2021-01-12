@@ -33,5 +33,5 @@ btn.addEventListener('click',()=>{
 
     console.log(mB)
     const result = start(mA,mB);
-    // imprimeResultado(matrizC,result.matriz,result.columnas);
+    imprimeResultado(matrizC,result.matriz,result.columnas);
 })

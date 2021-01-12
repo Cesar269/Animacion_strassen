@@ -157,14 +157,17 @@ export default class isStrassen {
             const q1 = this.divideByBlock(this.add(a11, a22), this.add(b11, b22));
             const q2 = this.divideByBlock(this.add(a21, a22), b11);
             const q3 = this.divideByBlock(a11, this.substract(b12, b22));
+            
             const q4 = this.divideByBlock(a22, this.substract(b21, b11));
             const q5 = this.divideByBlock(this.add(a11, a12), b22);
+          
             const q6 = this.divideByBlock(this.substract(a21, a11), this.add(b11, b12));
             const q7 = this.divideByBlock(this.substract(a12, a22), this.add(b21, b22));
 
             // matriz c construction with strassen formulas
             const c11 = this.add(this.substract(this.add(q1, q4), q5), q7);
             const c12 = this.add(q3, q5);
+          
             const c21 = this.add(q2, q4);
             const c22 = this.add(this.add(this.substract(q1, q2), q3), q6);
 

@@ -7,3 +7,12 @@ input{
 .tamano{
     width: 10vw;
 }
+td{
+    background-color: azure;
+
+}
+tr{
+    color: brown;
+    font-size: 2vh;
+    
+}

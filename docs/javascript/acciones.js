@@ -25,13 +25,11 @@ export const recibeMatriz = (nodo,n) => {
     return matriz;
 };
 export const start = (matrizA,matrizB)=>{
-    // const c = new Strassen();
-    // const result = c.applyStrassen(matrizA,matrizB);
-    // console.log(result.matriz);
-    // return result
-    const c = new isStrassen();
-    console.log(c.strassen(matrizA,matrizB).matriz);
     
+    const c = new isStrassen();
+    
+    const result =c.strassen(matrizA,matrizB);
+    return result;
 }
 export const imprimeResultado = (nodo,matriz,n)=>{
     receteaMatriz(nodo);
