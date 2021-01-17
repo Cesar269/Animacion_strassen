@@ -1,6 +1,78 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
 body{
-    background-color: rgb(192, 199, 196);
+    background-color: #D6E8EE;
+    font-family: 'Quicksand', sans-serif;
 }
 input{
-    width: 40px;
+    width: 100%;
+    border: none;
+    text-align: center;
+}
+table{
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 5px;
+    background: #D6E8EE;
+    color: #fff;
+    margin: 20px 10px;
+}
+th, td {
+    background: #fff;
+    color: #000;
+    border-radius: 5px;
+    text-align: center;
+}
+.tamano{
+    width: 20%;
+}
+
+.nav{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    background-color: #001B24; 
+}
+li,a{
+    font-weight: 500;
+    font-size: 30px;
+    color: rgb(235, 243, 250);
+    text-decoration: none;
+    transition: 0.3s;
+
+}
+header{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 30px 10%;
+
+}
+.logo{
+    color: #fff;
+    font-size: 2.5vh;
+    font-weight: 800;
+}
+.nav_list{
+    list-style: none;
+}
+.nav_list li{
+    font-size: 1.8vh;
+    padding: 0px 20px;
+}
+button{
+    padding: 5px 25px;
+    margin: 5px auto;
+    background-color: #02457A;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3 ease 0s;
+    font-weight: 600;
+    font-size: 2vh;
+    color: rgb(235, 243, 250);
+}
+button:hover{
+    background-color: rgb(0, 136, 169,0.8);
 }

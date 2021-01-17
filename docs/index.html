@@ -8,41 +8,80 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
     <link href="css/style.css" rel="stylesheet">
-
+    <link rel="stylesheet" href="css/stylegsap.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.6.0/gsap.min.js"></script>
+    <script src="https://kit.fontawesome.com/32ab46b9e5.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
+    <!-- Header de presentacion -->
+    <header class="nav">
+        <p class="logo">Metodo de Strassen</span>
+        <ul class="nav_list">
+            <li>Malacara González Manuel Salvador</li>
+            <li>León Torres Guadalupe Jurian</li>
+            <li>Leal Hernández César</li>
+        </ul>
+        <a href="https://github.com/Cesar269/Animacion_strassen" target="_blank">
+            <i class="fab fa-github"></i>
+        </a>
+    </header>
+<!-- Alert de arreglo -->
     <div class="alert alert-danger my-3 mx-3" role="alert">
         <b>RECUERDA</b> que las dimensiones de la matriz A y B deben ser las mismas.
     </div>
-    <label>Ingresa la dimesión que buscas de la matriz</label>
-    <input class="tamano" type="number" />
-    <button class="btn btn-info generar">Generar matriz</button>
-    <button class="btn btn-dark aleatorio">llenar random</button>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-sm-12">
+                <label>Ingresa la dimesión que buscas de la matriz</label>
+                <input class="tamano" type="number" />
+            </div>
+
+        </div>
+        
+    </div>
+    <div class="botones container mt-5">
+        <button class="generar">Generar matriz</button>
+        <button class="aleatorio">Llenar random</button>
+        <button class="start">Multiplicar</button>
+    </div>
+   
+   <!-- seccion de cambio de las matrices A y B -->
     <div class="container mt-5">
         <div class="row">
             <div class="col-sm-6">
                 <h3>Matriz [A]</h3>
-                <table class="matrizA">                
+                <table class="matrizA">
                 </table>
             </div>
             <div class="col-sm-6">
                 <h3>
                     Matriz [B]
                 </h3>
-                <table class="matrizB">   
-                </table>    
+                <table class="matrizB">
+                </table>
             </div>
         </div>
     </div>
-    <br>
-    <button class="btn btn-danger start">Multiplicar</button>
+
+    <!-- Impresion de la Matriz resultante C -->
     <div class="container mt-5">
         <h3>Matriz C</h3>
         <table class="matrizC">
-            
         </table>
     </div>
+
+
+    <!-- Seccion de produccion para visualizar el procedimiento -->
+    <div class="container mt-5">
+        <h4>recursiones</h4>
+        <div class="recursiones">
+        </div>
+    </div>
+
+
+
     <script src="./javascript/index.js" type="module"></script>
 </body>
 
