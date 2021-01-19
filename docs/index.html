@@ -67,21 +67,77 @@
 
     <!-- Impresion de la Matriz resultante C -->
     <div class="container mt-5">
-        <h3>Matriz C</h3>
+        <h3>[A] * [B] = [C]</h3>
         <table class="matrizC">
         </table>
     </div>
 
 
     <!-- Seccion de produccion para visualizar el procedimiento -->
-    <div class="container mt-5">
-        <h4>recursiones</h4>
-        <div class="recursiones">
+
+    <button type="button" id="play">Observar solución ( Diviertete :D )</button>
+    <!-- Full screen modal -->
+    <div class="modal fade" id="superModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-fullscreen">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Animacion</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h4>Formulas</h4>
+                    <div class="formulas">
+
+                        <span>
+                            <p class="m1"> M1 = (A11+A22)(B11+B22)</p>
+                            <p class="m2"> M2 = (A21 + A22)B11</p>
+                            <p class="m3"> M3 = A11(B12-B22) </p>
+                            <p class="m4"> M4 = A22(B21-B11)</p>
+
+                        </span>
+                        <span>
+                            <p class="m5"> M5 = (A11+A12)B22</p>
+                            <p class="m6"> M6 = (A21-A11)(B11+B12)</p>
+                            <p class="m7"> M7 = (A12-A22)(B21+B22</p>
+                        </span>
+                        <span>
+                            <p class="c11"> C11 = M1+M4-M5+M7</p>
+                            <p class="c12"> C12 = M3+M5</p>
+                            <p class="c21"> C21 = M2+M4</p>
+                            <p class="c22"> C22 = M1-M2+M3+M6</p>
+                        </span>
+                    </div>
+                
+                    <h3 class="guia">hello</h3>
+                    <div class="animacion container mt-5">
+                        <table class="principal">
+                            
+                        </table>
+                        <table class="prueba">
+    
+                        </table>
+                        <table class="prueba2">
+    
+                        </table>
+                        <table class="prueba3">
+    
+                        </table>
+                    </div>
+                
+                
+                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar animación</button>
+                </div>
+            </div>
         </div>
     </div>
 
-
-
+    <!-- modallllll -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+        crossorigin="anonymous"></script>
     <script src="./javascript/index.js" type="module"></script>
 </body>
 

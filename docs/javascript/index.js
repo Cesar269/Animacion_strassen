@@ -1,6 +1,7 @@
 
-import { imprimeResultado, muestraMatriz, start } from "./acciones.js"
+import { imprimeResultado, muestraMatriz, start, animacion } from "./acciones.js"
 //classes del html a ocupar
+
 const input = document.querySelector(".tamano");
 const matrizA = document.querySelector(".matrizA");
 const matrizB = document.querySelector(".matrizB");
@@ -8,9 +9,15 @@ const matrizC = document.querySelector(".matrizC");
 const resolver = document.querySelector(".start");
 const generar = document.querySelector(".generar")
 const aleatorio = document.querySelector(".aleatorio");
+const play = document.querySelector('#play');
+const modal = new bootstrap.Modal(document.querySelector('#superModal'))
+const prueba1 = document.querySelector(".prueba")
+const prueba2 = document.querySelector(".prueba2")
+const prueba3 = document.querySelector(".prueba3")
 //inicio de la pagina mostrando dos matrices
 let mA;
 let mB;
+let result;
 input.value = 2;
 mB = muestraMatriz(matrizB, input.value, false);
 mA = muestraMatriz(matrizA, input.value, false);
@@ -47,7 +54,17 @@ resolver.addEventListener('click', () => {
             mA.matriz[i][j] = parseInt(mA.matriz[i][j], 10);
         }
     }
-    const result = start(mA, mB);
-    console.log(result.matriz);
+
+    result = start(mA, mB);
     imprimeResultado(matrizC, result.matriz, result.columnas);
+})
+
+play.addEventListener('click', () => {
+    if (result) {
+        modal.show()
+        animacion(prueba1,prueba2,prueba3,mA,mB,result);
+    } else {
+        alert("Aún no puede hacer uso de este boton, haga la multiplicación e intente de nuevo")
+        result = null;
+    }
 })

@@ -1,8 +1,9 @@
 import Matriz from "./Matriz.js"
 //import Strassen from "./casiStrassen.js"
 import isStrassen from "./isStrassen.js"
-import {applythis} from "./gsapAnimaciones.js"
-
+import {desaparecerTabla, resultadoṔrincipal} from "./gsapAnimaciones.js"
+import StrassenAnimation from "./StrassenAnimation.js"
+import { animacionTabla } from "./Animaciones.js";
 export const muestraMatriz = (nodo,n,aleatorio) => {
     receteaMatriz(nodo);
     const matriz = new Matriz(n, n, aleatorio);
@@ -15,11 +16,11 @@ export const muestraMatriz = (nodo,n,aleatorio) => {
             let newtr = document.createElement("td")
             let newinput = document.createElement("input")
             newinput.setAttribute("type", "number");
-            newinput.value = miMatriz[j][i];
+            newinput.value = miMatriz[i][j];
             newTd.appendChild(newtr);
             newtr.appendChild(newinput);
             newinput.addEventListener('change', () => {
-                miMatriz[j][i] = newinput.value;
+                miMatriz[i][j] = newinput.value;
             })
             
         }
@@ -30,6 +31,7 @@ export const start = (matrizA,matrizB)=>{
     
     const c = new isStrassen();
     const result =c.strassen(matrizA,matrizB);
+    console.log("primer resultado:",result.matriz);
     return result;
 }
 export const imprimeResultado = (nodo,matriz,n)=>{
@@ -44,8 +46,8 @@ export const imprimeResultado = (nodo,matriz,n)=>{
             newTr.appendChild(newtd);
         }
     }
-    applythis();
-
+    resultadoṔrincipal();
+    
 };
 
 const receteaMatriz = (nodo) => {
@@ -54,3 +56,14 @@ const receteaMatriz = (nodo) => {
     }
     return false;   
 };
+export const animacion = (nodo,nodoB,nodoC,matrizA,matrizB,matrizC)=>{
+        animacionTabla(nodo,matrizA);
+        animacionTabla(nodoB,matrizB);
+        animacionTabla(nodoC,matrizC);
+        setTimeout(()=>{
+
+            desaparecerTabla(nodo,matrizA);
+            desaparecerTabla(nodoB,matrizB);
+            desaparecerTabla(nodoC,matrizC);
+        },3000);
+}

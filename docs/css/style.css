@@ -1,78 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
 
-@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
-
-body{
-    background-color: #D6E8EE;
-    font-family: 'Quicksand', sans-serif;
+body {
+  background-color: #d6e8ee;
+  font-family: "Quicksand", sans-serif;
 }
-input{
-    width: 100%;
-    border: none;
-    text-align: center;
+input {
+  width: 100%;
+  border: none;
+  text-align: center;
 }
-table{
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 5px;
-    background: #D6E8EE;
-    color: #fff;
-
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 5px;
+  background: #d6e8ee;
+  color: #fff;
 }
-th, td {
-    background: #fff;
-    color: #000;
-    border-radius: 5px;
-    text-align: center;
+th,
+td {
+  background: #fff;
+  color: #000;
+  border-radius: 5px;
+  text-align: center;
 }
-.tamano{
-    width: 20%;
+.tamano {
+  width: 20%;
 }
 
-.nav{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    background-color: #001B24; 
+.nav {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  background-color: #001b24;
 }
-li,a{
-    font-weight: 500;
-    font-size: 30px;
-    color: rgb(235, 243, 250);
-    text-decoration: none;
-    transition: 0.3s;
-
+li,
+a {
+  font-weight: 500;
+  font-size: 30px;
+  color: rgb(235, 243, 250);
+  text-decoration: none;
+  transition: 0.3s;
 }
-header{
+header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 30px 10%;
+}
+.logo {
+  color: #fff;
+  font-size: 2.5vh;
+  font-weight: 800;
+}
+.nav_list {
+  list-style: none;
+}
+.nav_list li {
+  font-size: 1.8vh;
+  padding: 0px 20px;
+}
+button {
+  padding: 5px 25px;
+  margin: 5px auto;
+  background-color: #02457a;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s ease;
+  font-weight: 600;
+  font-size: 2vh;
+  color: rgb(235, 243, 250);
+}
+button:hover {
+  background-color: #02447ace;
+}
+h3 {
+  text-align: center;
+}
+#play {
+  text-align: center;
+  display: flex;
+  margin-top: 30px;
+}
+#superModal {
+  background-color: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(2px);
+}
+.formulas{
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
-    align-items: center;
-    padding: 30px 10%;
-
-}
-.logo{
-    color: #fff;
-    font-size: 2.5vh;
-    font-weight: 800;
-}
-.nav_list{
-    list-style: none;
-}
-.nav_list li{
-    font-size: 1.8vh;
-    padding: 0px 20px;
-}
-button{
-    padding: 5px 25px;
-    margin: 5px auto;
-    background-color: #02457A;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: 0.3s ease;
-    font-weight: 600;
-    font-size: 2vh;
-    color: rgb(235, 243, 250);
-}
-button:hover{
-    background-color: #02447ace;
+    font-weight: 500;
+    font-size: 15px;
 }
