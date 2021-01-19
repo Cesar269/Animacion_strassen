@@ -3,7 +3,7 @@ import Matriz from "./Matriz.js"
 import isStrassen from "./isStrassen.js"
 import {desaparecerTabla, resultadoṔrincipal} from "./gsapAnimaciones.js"
 import StrassenAnimation from "./StrassenAnimation.js"
-import { animacionTabla } from "./Animaciones.js";
+
 export const muestraMatriz = (nodo,n,aleatorio) => {
     receteaMatriz(nodo);
     const matriz = new Matriz(n, n, aleatorio);
@@ -56,14 +56,9 @@ const receteaMatriz = (nodo) => {
     }
     return false;   
 };
-export const animacion = (nodo,nodoB,nodoC,matrizA,matrizB,matrizC)=>{
-        animacionTabla(nodo,matrizA);
-        animacionTabla(nodoB,matrizB);
-        animacionTabla(nodoC,matrizC);
-        setTimeout(()=>{
-
-            desaparecerTabla(nodo,matrizA);
-            desaparecerTabla(nodoB,matrizB);
-            desaparecerTabla(nodoC,matrizC);
-        },3000);
+export const animacion = (principal,nodo,nodoB,nodoC,matrizA,matrizB,matrizC)=>{
+        const miStraseen = new StrassenAnimation();
+        console.log("empezemos 7u7");
+        miStraseen.strassen(principal,nodo,nodoB,nodoC,matrizA,matrizB,matrizC);
 }
+

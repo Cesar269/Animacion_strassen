@@ -1,4 +1,5 @@
-import {aparicionTabla} from "./gsapAnimaciones.js"
+import {aparicionTabla, aparicionTexto, desaparecerTabla, desaparecerTexto} from "./gsapAnimaciones.js"
+const elGuia = document.querySelector(".guia")
 
 export const animacionTabla = (nodo, matrizObjeto) => {
     const matriz = matrizObjeto.matriz;
@@ -14,7 +15,40 @@ export const animacionTabla = (nodo, matrizObjeto) => {
         }
     }
     aparicionTabla(nodo);
+    setTimeout(()=>{
+        desaparecerTabla(nodo);
+    },5000)
 }
+
+export const intro = (principal,a,b,texto)=>{
+   
+    guia(texto,true);
+    animacionTabla(principal,a);
+    setTimeout(()=>{
+        animacionTabla(principal,b);
+    },7000)
+    setTimeout(()=>{
+        receteoNodo(principal)
+    },15000)
+}
+
+const guia = (texto,isInicio) =>{
+    if(isInicio){
+        aparicionTexto(elGuia);
+        elGuia.textContent = texto
+        setTimeout(()=>{
+            desaparecerTexto(elGuia);
+        },12000);
+    }
+    else{
+        aparicionTexto(elGuia);
+        elGuia.textContent = texto
+        setTimeout(()=>{
+            desaparecerTexto(elGuia);
+        },5000);
+    }
+}
+
 
 const receteoNodo = (nodo) => {
     while (nodo.firstChild) {
@@ -22,6 +56,3 @@ const receteoNodo = (nodo) => {
     }
     return false;  
 };
-export const guia = (texto) =>{
-    
-}

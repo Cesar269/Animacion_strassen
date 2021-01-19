@@ -1,4 +1,7 @@
 import Matriz from "./Matriz.js";
+// import {intro} from "./acciones.js"
+import { intro } from "./Animaciones.js"
+
 export default class StrassenAnimation {
 
 
@@ -76,7 +79,7 @@ export default class StrassenAnimation {
     }
 
 
-    multiply(a, b) {
+    multiply(a, b,c,nodo,nodoB,nodoC,principal,timerInicio) {
 
         const n = a.matriz.length;
 
@@ -112,15 +115,16 @@ export default class StrassenAnimation {
             b22.matriz = this.split(b, n / 2, n, n / 2, n);
 
             // recursion aplicando las formulas de strassen
-        
-            const q1 = this.multiply(this.add(a11, a22), this.add(b11, b22));
-            const q2 = this.multiply(this.add(a21, a22), b11);
-            const q3 = this.multiply(a11, this.sub(b12, b22));
 
-            const q4 = this.multiply(a22, this.sub(b21, b11));
-            const q5 = this.multiply(this.add(a11, a12), b22);
-            const q6 = this.multiply(this.sub(a21, a11), this.add(b11, b12));
-            const q7 = this.multiply(this.sub(a12, a22), this.add(b21, b22));
+            const q1 = this.multiply(this.add(a11, a22), this.add(b11, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
+            
+            const q2 = this.multiply(this.add(a21, a22), b11,c,nodo,nodoB,nodoC,principal,timerInicio);
+            const q3 = this.multiply(a11, this.sub(b12, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
+
+            const q4 = this.multiply(a22, this.sub(b21, b11),c,nodo,nodoB,nodoC,principal,timerInicio);
+            const q5 = this.multiply(this.add(a11, a12), b22,c,nodo,nodoB,nodoC,principal,timerInicio);
+            const q6 = this.multiply(this.sub(a21, a11), this.add(b11, b12),c,nodo,nodoB,nodoC,principal,timerInicio);
+            const q7 = this.multiply(this.sub(a12, a22), this.add(b21, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
 
             // construccion de la matriz
             const c11 = this.add(this.sub(this.add(q1, q4), q5), q7);
@@ -143,10 +147,11 @@ export default class StrassenAnimation {
 
 
 
-    strassen(a, b) {
+    strassen(principal, nodo, nodoB, nodoC, a, b, mc) {
 
         const size = a.columnas;
         let c = new Matriz(size, size);
+        let guia = "";
 
         //pregunta si las matrices son base 2, si no lo son
         //arma una base 2 llenando de ceros
@@ -155,15 +160,18 @@ export default class StrassenAnimation {
             a = this.fillPowerOfTwo(a);
             b = this.fillPowerOfTwo(b);
             // recursion
-            c = this.multiply(a, b, 0);
+            guia = "Llenamos la matrices de ceros"
+            intro(principal, a, b, guia,nodo, nodoB, nodoC);
+            c = this.multiply(a, b,mc,nodo,nodoB,nodoC,principal,15000);
 
 
             // remueve los ceros de la matriz
             this.reshape(c, size);
         }
         else {
-            c = this.multiply(a, b);
-
+            guia="Matrices iniciales";
+            intro(principal, a, b, guia);
+            c = this.multiply(a, b,mc,nodo,nodoB,nodoC,principal,15000);
         }
         return c;
     }

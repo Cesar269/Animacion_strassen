@@ -14,6 +14,7 @@ const modal = new bootstrap.Modal(document.querySelector('#superModal'))
 const prueba1 = document.querySelector(".prueba")
 const prueba2 = document.querySelector(".prueba2")
 const prueba3 = document.querySelector(".prueba3")
+const principal = document.querySelector('.principal');
 //inicio de la pagina mostrando dos matrices
 let mA;
 let mB;
@@ -62,7 +63,7 @@ resolver.addEventListener('click', () => {
 play.addEventListener('click', () => {
     if (result) {
         modal.show()
-        animacion(prueba1,prueba2,prueba3,mA,mB,result);
+        animacion(principal,prueba1,prueba2,prueba3,mA,mB,result);
     } else {
         alert("Aún no puede hacer uso de este boton, haga la multiplicación e intente de nuevo")
         result = null;
