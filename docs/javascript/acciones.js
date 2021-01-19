@@ -32,6 +32,8 @@ export const start = (matrizA,matrizB)=>{
     const c = new isStrassen();
     const result =c.strassen(matrizA,matrizB);
     console.log("primer resultado:",result.matriz);
+    console.log("matrizA",matrizA.matriz);
+    console.log("matrizB",matrizB.matriz)
     return result;
 }
 export const imprimeResultado = (nodo,matriz,n)=>{

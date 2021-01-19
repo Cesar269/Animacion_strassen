@@ -16,3 +16,7 @@ export const desaparecerTexto = (nodo) => {
     gsap.fromTo(nodo,{opacity:1},{opacity:0,duration:2});
 }
 //operaciones 
+export const gsapSuma1= (nodo,nodoB)=>{
+    gsap.fromTo(nodo,{opacity:1,y:0},{opacity:0,x:nodoB.getBoundingClientRect().right,duration:1.5})
+    gsap.fromTo(nodoB,{opacity:1,y:0},{opacity:0,x:nodoB.getBoundingClientRect().right-nodo.getBoundingClientRect().right,duration:1.5})    
+}
