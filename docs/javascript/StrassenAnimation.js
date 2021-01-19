@@ -1,6 +1,6 @@
 import Matriz from "./Matriz.js";
 // import {intro} from "./acciones.js"
-import { intro } from "./Animaciones.js"
+import { animacionq1, intro } from "./Animaciones.js"
 
 export default class StrassenAnimation {
 
@@ -117,7 +117,7 @@ export default class StrassenAnimation {
             // recursion aplicando las formulas de strassen
 
             const q1 = this.multiply(this.add(a11, a22), this.add(b11, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
-            
+            // animacionq1(a11,a22,this.add(a11,a22),b11,b22,this.add(b11,b22),timerInicio,nodoC);
             const q2 = this.multiply(this.add(a21, a22), b11,c,nodo,nodoB,nodoC,principal,timerInicio);
             const q3 = this.multiply(a11, this.sub(b12, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
 
@@ -152,6 +152,7 @@ export default class StrassenAnimation {
         const size = a.columnas;
         let c = new Matriz(size, size);
         let guia = "";
+        let duracionInicio = 2000
 
         //pregunta si las matrices son base 2, si no lo son
         //arma una base 2 llenando de ceros
@@ -161,7 +162,7 @@ export default class StrassenAnimation {
             b = this.fillPowerOfTwo(b);
             // recursion
             guia = "Llenamos la matrices de ceros"
-            intro(principal, a, b, guia,nodo, nodoB, nodoC);
+            intro(principal, a, b, guia,duracionInicio);
             c = this.multiply(a, b,mc,nodo,nodoB,nodoC,principal,15000);
 
 
@@ -170,7 +171,7 @@ export default class StrassenAnimation {
         }
         else {
             guia="Matrices iniciales";
-            intro(principal, a, b, guia);
+            intro(principal, a, b, guia,duracionInicio);
             c = this.multiply(a, b,mc,nodo,nodoB,nodoC,principal,15000);
         }
         return c;

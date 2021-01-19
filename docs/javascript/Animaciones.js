@@ -1,7 +1,16 @@
-import {aparicionTabla, aparicionTexto, desaparecerTabla, desaparecerTexto} from "./gsapAnimaciones.js"
+import { aparicionTabla, aparicionTexto, desaparecerTabla, desaparecerTexto } from "./gsapAnimaciones.js"
 const elGuia = document.querySelector(".guia")
 
-export const animacionTabla = (nodo, matrizObjeto) => {
+export const animacionTabla = (nodo, matrizObjeto,duracion) => {
+    aparicionTablaDOM(nodo,matrizObjeto);
+    aparicionTabla(nodo);
+    setTimeout(() => {
+        desaparecerTabla(nodo);
+    }, duracion)
+}
+
+
+const aparicionTablaDOM = (nodo, matrizObjeto)=>{
     const matriz = matrizObjeto.matriz;
     const n = matrizObjeto.columnas;
     receteoNodo(nodo);
@@ -14,45 +23,42 @@ export const animacionTabla = (nodo, matrizObjeto) => {
             newTr.appendChild(newtd);
         }
     }
-    aparicionTabla(nodo);
-    setTimeout(()=>{
-        desaparecerTabla(nodo);
-    },5000)
 }
 
-export const intro = (principal,a,b,texto)=>{
-   
-    guia(texto,true);
-    animacionTabla(principal,a);
-    setTimeout(()=>{
-        animacionTabla(principal,b);
-    },7000)
-    setTimeout(()=>{
+export const intro = (principal, a, b, texto,duracionIntro) => {
+
+    guia(texto,(duracionIntro*2)+2000);
+    animacionTabla(principal, a,duracionIntro);
+    setTimeout(() => {
+        animacionTabla(principal, b,duracionIntro);
+    }, duracionIntro+2000)
+    setTimeout(() => {
         receteoNodo(principal)
-    },15000)
+    }, (duracionIntro*2)+4000)
 }
 
-const guia = (texto,isInicio) =>{
-    if(isInicio){
+const guia = (texto,duracion) => {  
         aparicionTexto(elGuia);
         elGuia.textContent = texto
-        setTimeout(()=>{
+        setTimeout(() => {
             desaparecerTexto(elGuia);
-        },12000);
-    }
-    else{
-        aparicionTexto(elGuia);
-        elGuia.textContent = texto
-        setTimeout(()=>{
-            desaparecerTexto(elGuia);
-        },5000);
-    }
+        }, duracion);
 }
-
 
 const receteoNodo = (nodo) => {
     while (nodo.firstChild) {
         nodo.removeChild(nodo.firstChild);
     }
-    return false;  
+    return false;
 };
+export const animacionq1 = (a11,a22,resultado1,b11,b22,resultado2,timer,nodoC) => {
+    setTimeout(()=>{
+        animacionTabla(nodoC,resultado1);
+    },timer);
+}
+const suma =()=>{
+
+}
+const resta = ()=>{
+
+}

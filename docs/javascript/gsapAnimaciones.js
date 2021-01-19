@@ -1,4 +1,4 @@
-import { animacion } from "./acciones";
+
 
 export const resultadoṔrincipal = () => {
     gsap.fromTo(".matrizC",{opacity:0, x:-100},{opacity:1,duration:3,x:0,ease: "expo.out"});
