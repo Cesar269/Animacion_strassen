@@ -59,30 +59,30 @@ const receteoNodo = (nodo) => {
     return false;
 };
 //animacion de q1
-export const animacionq1 = (a11,a22,resultado1,b11,b22,resultado2,timer,nodo,nodoB,nodoC) => {
+export const animacionq1 = (a11,a22,resultado1,b11,b22,resultado2,q1,timer,nodo,nodoB,nodoC) => {
+    interaccion(nodo,nodoB,nodoC,a11,a22,resultado1,"(A11+A22)",3000,timer)
+    interaccion(nodo,nodoB,nodoC,b11,b22,resultado2,"(B11+B22)",3000,timer+4000);
+    interaccion(nodo,nodoB,nodoC,resultado1,resultado2,q1,"(A11+A22)*(B11+B22)",3000,timer+8000)
+}
+export const animacionq2 = (a21,a22,resultado1,b11,q2,timer,nodo,nodoB,nodoC)=>{
+    interaccion(nodo,nodoB,nodoC,a21,a22,resultado1,"(A21+A22)",3000,timer)
+    interaccion(nodo,nodoB,nodoC,resultado1,b11,q2,"(A21+A22)*B11",3000,timer+4000);
+}
+export const animacionq3 = (b12,b22,resultado1,a11,q3,timer,nodo,nodoB,nodoC) =>{
+    interaccion(nodo,nodoB,nodoC,b12,b22,resultado1,"(B12-B22)",3000,timer)
+    interaccion(nodo,nodoB,nodoC,resultado1,a11,q3,"(B12-B22)*A11",3000,timer+4000);
+}
+const interaccion = (nodo,nodoB,nodoC,v1,v2,resultado,texto,duracion,timer)=>{
     setTimeout(()=>{
-        animacionTabla(nodo,a11,3000);
-        animacionTabla(nodoB,a22,3000);
-        animacionTabla(nodoC,resultado1,3000);
-        guia("(a11+a22)",3000)
-        suma(nodo,nodoB,m1,(3000/2));
+        animacionTabla(nodo,v1,duracion);
+        animacionTabla(nodoB,v2,duracion);
+        animacionTabla(nodoC,resultado,duracion);
+        guia(texto,duracion)
+        interaccion1(nodo,nodoB,(duracion/2));
     },timer);
-    setTimeout(()=>{
-        animacionTabla(nodo,b11,3000);
-        animacionTabla(nodoB,b22,3000);
-        animacionTabla(nodoC,resultado2,3000);
-        guia("(b11+b22)",3000)
-        suma(nodo,nodoB,m2,(3000/2));
-    },timer+4000)
-    setTimeout(()=>{
-        
-    },timer+8000)
-
 }
-export const animacionq2 = ()=>{
 
-}
-const suma =(nodo,nodoB,mx,timer)=>{
+const interaccion1 =(nodo,nodoB,timer)=>{
     setTimeout(()=>{       
         gsapSuma1(nodo,nodoB)
     },timer)

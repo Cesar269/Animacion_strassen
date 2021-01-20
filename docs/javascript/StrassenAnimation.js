@@ -1,6 +1,6 @@
 import Matriz from "./Matriz.js";
 // import {intro} from "./acciones.js"
-import { animacionq1, intro } from "./Animaciones.js"
+import { animacionq1, animacionq2, animacionq3, intro } from "./Animaciones.js"
 
 export default class StrassenAnimation {
 
@@ -117,15 +117,16 @@ export default class StrassenAnimation {
             // recursion aplicando las formulas de strassen
 
             const q1 = this.multiply(this.add(a11, a22), this.add(b11, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
-            animacionq1(a11,a22,this.add(a11,a22),b11,b22,this.add(b11,b22),timerInicio,nodo,nodoB,nodoC);
             const q2 = this.multiply(this.add(a21, a22), b11,c,nodo,nodoB,nodoC,principal,timerInicio);
             const q3 = this.multiply(a11, this.sub(b12, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
-
             const q4 = this.multiply(a22, this.sub(b21, b11),c,nodo,nodoB,nodoC,principal,timerInicio);
             const q5 = this.multiply(this.add(a11, a12), b22,c,nodo,nodoB,nodoC,principal,timerInicio);
             const q6 = this.multiply(this.sub(a21, a11), this.add(b11, b12),c,nodo,nodoB,nodoC,principal,timerInicio);
             const q7 = this.multiply(this.sub(a12, a22), this.add(b21, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
-
+            //animaciones de q's
+            animacionq1(a11,a22,this.add(a11,a22),b11,b22,this.add(b11,b22),q1,timerInicio,nodo,nodoB,nodoC);//12
+            animacionq2(a21,a22,this.add(a21,a22),b11,q2,timerInicio+12000,nodo,nodoB,nodoC)//8
+            animacionq3(b12,b22,this.sub(b12,b22),a11,q3,timerInicio+20000,nodo,nodoB,nodoC)//8
             // construccion de la matriz
             const c11 = this.add(this.sub(this.add(q1, q4), q5), q7);
             const c12 = this.add(q3, q5);
