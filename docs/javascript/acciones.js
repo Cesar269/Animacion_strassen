@@ -2,7 +2,9 @@ import Matriz from "./Matriz.js"
 //import Strassen from "./casiStrassen.js"
 import isStrassen from "./isStrassen.js"
 import {desaparecerTabla, resultadoṔrincipal} from "./gsapAnimaciones.js"
+
 import StrassenAnimation from "./StrassenAnimation.js"
+
 
 export const muestraMatriz = (nodo,n,aleatorio) => {
     receteaMatriz(nodo);
@@ -22,7 +24,6 @@ export const muestraMatriz = (nodo,n,aleatorio) => {
             newinput.addEventListener('change', () => {
                 miMatriz[i][j] = newinput.value;
             })
-            
         }
     }
     return matriz;
@@ -33,7 +34,8 @@ export const start = (matrizA,matrizB)=>{
     const result =c.strassen(matrizA,matrizB);
     console.log("primer resultado:",result.matriz);
     console.log("matrizA",matrizA.matriz);
-    console.log("matrizB",matrizB.matriz)
+    console.log("matrizB",matrizB.matriz);
+    
     return result;
 }
 export const imprimeResultado = (nodo,matriz,n)=>{
@@ -48,6 +50,7 @@ export const imprimeResultado = (nodo,matriz,n)=>{
             newTr.appendChild(newtd);
         }
     }
+    // desaparecerInicio();
     resultadoṔrincipal();
     
 };
@@ -58,9 +61,10 @@ const receteaMatriz = (nodo) => {
     }
     return false;   
 };
-export const animacion = (principal,nodo,nodoB,nodoC,matrizA,matrizB,matrizC)=>{
+export const animacion = (matrizA,matrizB,principal)=>{
         const miStraseen = new StrassenAnimation();
+        
         console.log("empezemos 7u7");
-        miStraseen.strassen(principal,nodo,nodoB,nodoC,matrizA,matrizB,matrizC);
+        miStraseen.strassen(principal,matrizA,matrizB);
+       
 }
-

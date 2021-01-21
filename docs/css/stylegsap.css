@@ -17,3 +17,64 @@
 .guia{
   text-align: center;
 }
+/* .secondAnimation{
+  display: flex;
+  flex-direction: column;
+} */
+.siete{
+  width: 15%;
+  text-align: center;
+  /* height: 20%;  */
+  background-color: white;
+  border: solid;
+  border: 1px solid black;
+  margin-top: 20px;
+}
+.nueve{
+  width: 12%;
+  text-align: center;
+  /* height: 20%;  */
+  background-color: white;
+  border: solid;
+  border: 1px solid black;
+  margin-top: 20px;
+}
+
+.secondAnimation{
+  display: flex;
+  flex-direction: column;
+}
+
+.q,.c{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 20px;
+}
+/* .mas,.por,.menos,.igual{
+  width: 4%;
+} */
+.mas,.menos,.por,.igual,.M,.C,.mas2,.menos2,.igual2{
+  font-weight:bold;
+  font-size: 4vw;
+  text-shadow: 0px 2px 2px rgb(131, 127, 127);
+}
+.mas,.mas2{
+  color: brown;
+}
+.menos,.menos2{
+  color: blue;
+}
+.por{
+  color: green;
+}
+.igual,.igual2{
+  color: blueviolet;
+}
+.fijo{
+  position: absolute;
+  top:250px;
+  right:75px;
+}

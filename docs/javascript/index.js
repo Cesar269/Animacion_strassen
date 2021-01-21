@@ -63,7 +63,7 @@ resolver.addEventListener('click', () => {
 play.addEventListener('click', () => {
     if (result) {
         modal.show()
-        animacion(principal,prueba1,prueba2,prueba3,mA,mB,result);
+        animacion(mA,mB,principal);
     } else {
         alert("Aún no puede hacer uso de este boton, haga la multiplicación e intente de nuevo")
         result = null;

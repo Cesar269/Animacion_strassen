@@ -1,6 +1,6 @@
 import Matriz from "./Matriz.js";
 // import {intro} from "./acciones.js"
-import { animacionq1, animacionq2, animacionq3, intro } from "./Animaciones.js"
+import { intro, superAnimacion } from "./Animaciones.js";
 
 export default class StrassenAnimation {
 
@@ -79,12 +79,11 @@ export default class StrassenAnimation {
     }
 
 
-    multiply(a, b,c,nodo,nodoB,nodoC,principal,timerInicio) {
+    multiply(a, b, total, duracion) {
 
         const n = a.matriz.length;
 
         const result = new Matriz(n, n, false);
-
 
         if (n == 1) {
 
@@ -116,22 +115,25 @@ export default class StrassenAnimation {
 
             // recursion aplicando las formulas de strassen
 
-            const q1 = this.multiply(this.add(a11, a22), this.add(b11, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
-            const q2 = this.multiply(this.add(a21, a22), b11,c,nodo,nodoB,nodoC,principal,timerInicio);
-            const q3 = this.multiply(a11, this.sub(b12, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
-            const q4 = this.multiply(a22, this.sub(b21, b11),c,nodo,nodoB,nodoC,principal,timerInicio);
-            const q5 = this.multiply(this.add(a11, a12), b22,c,nodo,nodoB,nodoC,principal,timerInicio);
-            const q6 = this.multiply(this.sub(a21, a11), this.add(b11, b12),c,nodo,nodoB,nodoC,principal,timerInicio);
-            const q7 = this.multiply(this.sub(a12, a22), this.add(b21, b22),c,nodo,nodoB,nodoC,principal,timerInicio);
+            const q1 = this.multiply(this.add(a11, a22), this.add(b11, b22), total - duracion, duracion);
+            const q2 = this.multiply(this.add(a21, a22), b11, 0, 0);
+            const q3 = this.multiply(a11, this.sub(b12, b22), 0, 0);
+            const q4 = this.multiply(a22, this.sub(b21, b11), 0, 0);
+            const q5 = this.multiply(this.add(a11, a12), b22, 0, 0);
+            const q6 = this.multiply(this.sub(a21, a11), this.add(b11, b12), 0, 0);
+            const q7 = this.multiply(this.sub(a12, a22), this.add(b21, b22), 0, 0);
             //animaciones de q's
-            animacionq1(a11,a22,this.add(a11,a22),b11,b22,this.add(b11,b22),q1,timerInicio,nodo,nodoB,nodoC);//12
-            animacionq2(a21,a22,this.add(a21,a22),b11,q2,timerInicio+12000,nodo,nodoB,nodoC)//8
-            animacionq3(b12,b22,this.sub(b12,b22),a11,q3,timerInicio+20000,nodo,nodoB,nodoC)//8
+            // animacionq1(a11,a22,this.add(a11,a22),b11,b22,this.add(b11,b22),q1,timerInicio,nodo,nodoB,nodoC);//12
+            // animacionq2(a21,a22,this.add(a21,a22),b11,q2,timerInicio+12000,nodo,nodoB,nodoC)//8
+            // animacionq3(b12,b22,this.sub(b12,b22),a11,q3,timerInicio+20000,nodo,nodoB,nodoC)//8
             // construccion de la matriz
             const c11 = this.add(this.sub(this.add(q1, q4), q5), q7);
             const c12 = this.add(q3, q5);
             const c21 = this.add(q2, q4);
             const c22 = this.add(this.add(this.sub(q1, q2), q3), q6);
+            if (total != 0) {
+                superAnimacion(a11, a12, a21, a22, b11, b12, b21, b22, q1, q2, q3, q4, q5, q6, q7, c11, c12, c21, c22, total - duracion, duracion);//10
+            }
 
 
             this.join(c11, result, 0, 0);
@@ -148,32 +150,48 @@ export default class StrassenAnimation {
 
 
 
-    strassen(principal, nodo, nodoB, nodoC, a, b, mc) {
+    strassen(principal, a, b) {
 
         const size = a.columnas;
         let c = new Matriz(size, size);
         let guia = "";
-        let duracionInicio = 2000
+        let duracionInicio = 4000;
+        //cantidad de animaciones
+        let numeroTransiciones = 0;
+
 
         //pregunta si las matrices son base 2, si no lo son
         //arma una base 2 llenando de ceros
 
         if (!(Math.log2(size) % 1 === 0)) {
+            let n = Math.floor(Math.log2(size)) + 1;
+            console.log("piso=" + n)
+            for (let x = 0; x < n; x++) {
+                numeroTransiciones = numeroTransiciones + Math.pow(7, x);
+            }
+            console.log("transiciones=" + numeroTransiciones);
             a = this.fillPowerOfTwo(a);
             b = this.fillPowerOfTwo(b);
             // recursion
-            guia = "Llenamos la matrices de ceros"
-            intro(principal, a, b, guia,duracionInicio);
-            c = this.multiply(a, b,mc,nodo,nodoB,nodoC,principal,(duracionInicio*2)+4000);
+            guia = "Llenamos la matrices de ceros y dividimos de mitad en mitad"
+            intro(principal, a, b, guia, duracionInicio);
+            c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * 10000, 10000);
 
 
             // remueve los ceros de la matriz
             this.reshape(c, size);
         }
         else {
-            guia="Matrices iniciales";
-            intro(principal, a, b, guia,duracionInicio);
-            c = this.multiply(a, b,mc,nodo,nodoB,nodoC,principal,(duracionInicio*2)+4000);
+            let n = Math.floor(Math.log2(size));
+            console.log("piso=" + n)
+            numeroTransiciones = 1;
+            for (let x = 1; x < n; x++) {
+                numeroTransiciones = numeroTransiciones + Math.pow(7, x);
+            }
+            console.log("transiciones=" + numeroTransiciones);
+            guia = "Estas son las matrices iniciales que se dividirán de mitad en mitad";
+            intro(principal, a, b, guia, duracionInicio);
+            c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * 10000, 10000);
         }
         return c;
     }
