@@ -47,6 +47,8 @@ const mas2 = document.querySelectorAll(".mas2")
 const menos2 = document.querySelectorAll(".menos2")
 const igual2 = document.querySelectorAll(".igual2")
 
+const posicionC = document.querySelector(".fijo");
+const referencia = document.querySelector(".referencia")
 /////////////////////////////////////////////////////////
 export const animacionTabla = (nodo, matrizObjeto, duracion) => {
     aparicionTablaDOM(nodo, matrizObjeto);
@@ -200,7 +202,11 @@ export const superAnimacion = (a11, a12, a21, a22, b11, b12, b21, b22, q1, q2, q
     setTimeout(() => {
         seccionC.forEach((nodo)=>{
             nodo.style.opacity = 1;
-        })   
+        })
+        posicionC.style.top = `${referencia.getBoundingClientRect().top}px`
+        posicionC.style.left = `${referencia.getBoundingClientRect().left}px`;
+        posicionC.style.bottom = `${referencia.getBoundingClientRect().bottom}px`
+        posicionC.style.right = `${referencia.getBoundingClientRect().right}px`;
         if(q1.filas == 1){
             guia("Apartir de estos resultados vamos creando la matriz resutante de esta iteración",duracion)
         }

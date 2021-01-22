@@ -156,6 +156,7 @@ export default class StrassenAnimation {
         let c = new Matriz(size, size);
         let guia = "";
         let duracionInicio = 4000;
+        let duracionTransiciones = 10000;
         //cantidad de animaciones
         let numeroTransiciones = 0;
 
@@ -191,7 +192,7 @@ export default class StrassenAnimation {
             console.log("transiciones=" + numeroTransiciones);
             guia = "Estas son las matrices iniciales que se dividirán de mitad en mitad";
             intro(principal, a, b, guia, duracionInicio);
-            c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * 10000, 10000);
+            c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * duracionTransiciones, duracionTransiciones);
         }
         return c;
     }
