@@ -174,7 +174,7 @@ export default class StrassenAnimation {
             a = this.fillPowerOfTwo(a);
             b = this.fillPowerOfTwo(b);
             // recursion
-            guia = "Hola bebe te amo un chingo"
+            guia = "Estas son las matrices iniciales que se dividirán de mitad en mitad cada que la operación sea una multiplicación y estas sean de tamaño mayor a 1"
             intro(principal, a, b, guia, duracionInicio);
             c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * 10000, 10000);
 
@@ -190,7 +190,7 @@ export default class StrassenAnimation {
                 numeroTransiciones = numeroTransiciones + Math.pow(7, x);
             }
             console.log("transiciones=" + numeroTransiciones);
-            guia = "Hola bebe te amo un chingo";
+            guia = "Estas son las matrices iniciales que se dividirán de mitad en mitad cada que la operación sea una multiplicación y estas sean de tamaño mayor a 1";
             intro(principal, a, b, guia, duracionInicio);
             c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * duracionTransiciones, duracionTransiciones);
             setTimeout(()=>{
