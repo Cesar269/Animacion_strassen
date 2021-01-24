@@ -41,6 +41,10 @@ a {
   text-decoration: none;
   transition: 0.3s;
 }
+a:hover{
+  transform: scale(1.2);
+  color: rgb(240, 234, 240);
+}
 header {
   display: flex;
   justify-content: space-around;
@@ -70,9 +74,12 @@ button {
   font-weight: 600;
   font-size: 2vh;
   color: rgb(235, 243, 250);
+  box-shadow: 1px 2px 5px 1px rgb(175, 173, 173);
 }
 button:hover {
   background-color: #02447ace;
+  box-shadow: 3px 2px 2px 2px rgb(175, 173, 173);
+  transform: scale(1.02);
 }
 h3 {
   text-align: center;
@@ -80,6 +87,7 @@ h3 {
 #play {
   text-align: center;
   display: flex;
+  justify-content: space-around;
   margin-top: 30px;
 }
 #superModal {

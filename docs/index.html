@@ -5,6 +5,7 @@
     <title>Strassen</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#083756" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous" />
     <link href="css/style.css" rel="stylesheet">
@@ -29,6 +30,8 @@
     <!-- Alert de arreglo -->
     <div class="alert alert-danger my-3 mx-3" role="alert">
         <b>RECUERDA</b> que las dimensiones de la matriz A y B deben ser las mismas.
+        En caso de que tus matrices no sea exponencial de base 2 (ej. 2, 4, 8, 16, 32...) 
+        <b>OBSERVARÁS</b> como se llena de ceros para tener las dimensión correcta
     </div>
 
     <div class="container mt-5">
@@ -42,9 +45,9 @@
 
     </div>
     <div class="botones container mt-5">
-        <button class="generar">Generar matriz</button>
+        <button class="generar">Crear matriz</button>
         <button class="aleatorio">Llenar random</button>
-        <button class="start">Multiplicar</button>
+        <button class="start">Multiplicar matrices</button>
     </div>
 
     <!-- seccion de cambio de las matrices A y B -->
@@ -81,7 +84,7 @@
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title">Animacion</h5>
+                    <h5 class="modal-title">Animación del metodo Strassen</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
@@ -108,145 +111,290 @@
                         </span>
                     </div>
                 
-                    <h3 class="guia mt-5"></h3>
-                    <div class="container mt-5">
-                        
-                        <table class="principal">
-                            
-                        </table>
+                    <h3 class="guia mt-3"></h3>
+                    <div class="animacion container mt-2">
+                        <div class="bloque">
+                            <h4 class="tituloPrincipal"></h4>
+                            <table class="principal">
+                            </table>
+                        </div>
+                        <div class="bloque">
+                            <h5 class="subtitulo1"></h5>
+                            <table class="subtablas subtabla1 nueve">                               
+                            </table>
+                        </div>
+                        <div class="bloque">     
+                            <h5 class="subtitulo2"></h5>                      
+                            <table class="subtablas subtabla2 nueve">       
+                            </table>
+                        </div>
+                        <div class="bloque">             
+                            <h5 class="subtitulo3"></h5>             
+                            <table class="subtablas subtabla3 nueve">   
+                            </table>
+                        </div>
                     </div>
-                    <!-- <div class="animacion container mt-5">
-                        <table class="prueba">
-    
-                        </table>
-                        <table class="prueba2">
-    
-                        </table>
-                        <table class="prueba3">
-    
-                        </table>
-                    </div> -->
-                    <div class="secondAnimation container mt-5 referencia">
+                    <div class="secondAnimation container referencia">
                         <div class="q">
                             <span class="M">M1 = </span>
-                            <table class="a11 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A11]</p>
+                                <table class="a11 nueve"></table>
+                            </div>
                             <span class="mas">+</span>
-                            <table class="a22 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">A22]</p>
+                                <table class="a22 nueve"></table>
+                            </div>
                             <span class="por">x</span>
-                            <table class="b11 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B11]</p>
+                                <table class="b11 nueve"></table>
+                            </div>
                             <span class="mas">+</span>
-                            <table class="b22 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B22]</p>
+                                <table class="b22 nueve"></table>
+                            </div>
                             <span class="igual">=</span>
-                            <table class="q1 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[M1]</p>
+                                <table class="q1 nueve"></table>
+                            </div>
                         </div>
                         <div class="q">
                             <span class="M">M2 = </span>
-                            <table class="a21 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A21]</p>
+                                <table class="a21 siete"></table>
+                            </div>
                             <span class="mas">+</span>
-                            <table class="a22 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A22]</p>
+                                <table class="a22 siete"></table>
+                            </div>
                             <span class="por">x</span>
-                            <table class="b11 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B11]</p>
+                                <table class="b11 siete"></table>
+                            </div>
                             <span class="igual">=</span>
-                            <table class="q2 siete"></table>
-
+                            <div class="bloque">
+                                <p class="minititulo">[M2]</p>
+                                <table class="q2 siete"></table>
+                            </div>
                         </div>
                         <div class="q ">
                             <span class="M">M3 = </span>
-                            <table class="a11 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A11]</p>
+                                <table class="a11 siete"></table>
+                            </div>
                             <span class="por">x</span>
-                            <table class="b12 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B12]</p>
+                                <table class="b12 siete"></table>
+                            </div>
                             <span class="menos">-</span>
-                            <table class="b22 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B22]</p>
+                                <table class="b22 siete"></table>
+                            </div>
                             <span class="igual">=</span>
-                            <table class="q3 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[M3]</p>
+                                <table class="q3 siete"></table>
+                            </div>
                         </div>
                         <div class="q">
                             <span class="M">M4 = </span>
-                            <table class="a22 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A22]</p>
+                                <table class="a22 siete"></table>
+                            </div>
                             <span class="por">x</span>
-                            <table class="b21 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B21]</p>
+                                <table class="b21 siete"></table>
+                            </div>
                             <span class="menos">-</span>
-                            <table class="b11 siete "></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B11]</p>
+                                <table class="b11 siete "></table>
+                            </div>
                             <span class="igual">=</span>
-                            <table class="q4 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[M4]</p>
+                                <table class="q4 siete"></table>
+                            </div>
                         </div>
                         <div class="q">
                             <span class="M">M5 = </span>
-                            <table class="a11 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A11]</p>
+                                <table class="a11 siete"></table>
+                            </div>
                             <span class="mas">+</span>
-                            <table class="a21 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A21]</p>
+                                <table class="a21 siete"></table>
+                            </div>
                             <span class="por">x</span>
-                            <table class="b22 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B22]</p>
+                                <table class="b22 siete"></table>
+                            </div>
                             <span class="igual">=</span>
-                            <table class="q5 siete"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[M5]</p>
+                                <table class="q5 siete"></table>
+                            </div>
                         </div>
                         <div class="q">
                             <span class="M">M6 = </span>
-                            <table class="a21 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A21]</p>
+                                <table class="a21 nueve"></table>
+                            </div>
                             <span class="menos">-</span>
-                            <table class="a11 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A11]</p>
+                                <table class="a11 nueve"></table>
+                            </div>
                             <span class="por">x</span>
-                            <table class="b11 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B11]</p>
+                                <table class="b11 nueve"></table>
+                            </div>
                             <span class="mas">+</span>
-                            <table class="b21 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B21]</p>
+                                <table class="b21 nueve"></table>
+                            </div>
                             <span class="igual">=</span>
-                            <table class="q6 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[M6]</p>
+                                <table class="q6 nueve"></table>
+                            </div>
                         </div>
                         <div class="q">
                             <span class="M">M7 = </span>
-                            <table class="a12 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A12]</p>
+                                <table class="a12 nueve"></table>
+                            </div>
                             <span class="menos">-</span>
-                            <table class="a22 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[A22]</p>
+                                <table class="a22 nueve"></table>
+                            </div>
                             <span class="por">x</span>
-                            <table class="b21 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B21]</p>
+                                <table class="b21 nueve"></table>
+                            </div>
                             <span class="mas">+</span>
-                            <table class="b22 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[B22]</p>
+                                <table class="b22 nueve"></table>
+                            </div>
                             <span class="igual">=</span>
-                            <table class="q7 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo">[M7]</p>
+                                <table class="q7 nueve"></table>
+                            </div>
                         </div>
                         <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
                        
                     </div>
-                    <div class="secondAnimation container mt-1 fijo">
+                    <div class="secondAnimation container fijo">
                         <div class="c">
                             <span class="C">C11 = </span>
-                            <table class="q12 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M1]</p>
+                                <table class="q12 nueve"></table>
+                            </div>
                             <span class="mas2">+</span>
-                            <table class="q42 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M4]</p>
+                                <table class="q42 nueve"></table>
+                            </div>
                             <span class="menos2">-</span>
-                            <table class="q52 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M5]</p>
+                                <table class="q52 nueve"></table>
+                            </div>
                             <span class="mas2">+</span>
-                            <table class="q72 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M7]</p>
+                                <table class="q72 nueve"></table>
+                            </div>
                             <span class="igual2">=</span>
-                            <table class="c11 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[C11]</p>
+                                <table class="c11 nueve"></table>
+                            </div>
                         </div>       
                         <div class="c">
                             <span class="C">C12 = </span>
-                            <table class="q32 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M3]</p>
+                                <table class="q32 nueve"></table>
+                            </div>
                             <span class="mas2">+</span>
-                            <table class="q52 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M5]</p>
+                                <table class="q52 nueve"></table>
+                            </div>
                             <span class="igual2">=</span>
-                            <table class="c12 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[C12]</p>
+                                <table class="c12 nueve"></table>
+                            </div>
                         </div>
                         <div class="c">
                             <span class="C">C21 = </span>
-                            <table class="q22 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M2]</p>
+                                <table class="q22 nueve"></table>
+                            </div>
                             <span class="mas2">+</span>
-                            <table class="q42 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M4]</p>
+                                <table class="q42 nueve"></table>
+                            </div>
                             <span class="igual2">=</span>
-                            <table class="c21 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[C21]</p>
+                                <table class="c21 nueve"></table>
+                            </div>
                         </div>
                         <div class="c">
                             <span class="C">C22 = </span>
-                            <table class="q12 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M1]</p>
+                                <table class="q12 nueve"></table>
+                            </div>
                             <span class="menos2">-</span>
-                            <table class="q22 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M2]</p>
+                                <table class="q22 nueve"></table>
+                            </div>
                             <span class="mas2">+</span>
-                            <table class="q32 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M3]</p>
+                                <table class="q32 nueve"></table>
+                            </div>
                             <span class="mas2">+</span>
-                            <table class="q62 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[M6]</p>
+                                <table class="q62 nueve"></table>
+                            </div>
                             <span class="igual2">=</span>
-                            <table class="c22 nueve"></table>
+                            <div class="bloque">
+                                <p class="minititulo2">[C22]</p>
+                                <table class="c22 nueve"></table>
+                            </div>
                         </div>
                     </div>
                               

@@ -155,7 +155,7 @@ export default class StrassenAnimation {
         const size = a.columnas;
         let c = new Matriz(size, size);
         let guia = "";
-        let duracionInicio = 4000;
+        let duracionInicio = 8000;
         let duracionTransiciones = 10000;
         //cantidad de animaciones
         let numeroTransiciones = 0;
@@ -174,7 +174,7 @@ export default class StrassenAnimation {
             a = this.fillPowerOfTwo(a);
             b = this.fillPowerOfTwo(b);
             // recursion
-            guia = "Llenamos la matrices de ceros y dividimos de mitad en mitad"
+            guia = "Hola bebe te amo un chingo"
             intro(principal, a, b, guia, duracionInicio);
             c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * 10000, 10000);
 
@@ -190,9 +190,13 @@ export default class StrassenAnimation {
                 numeroTransiciones = numeroTransiciones + Math.pow(7, x);
             }
             console.log("transiciones=" + numeroTransiciones);
-            guia = "Estas son las matrices iniciales que se dividirán de mitad en mitad";
+            guia = "Hola bebe te amo un chingo";
             intro(principal, a, b, guia, duracionInicio);
             c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * duracionTransiciones, duracionTransiciones);
+            setTimeout(()=>{
+                console.log("termine xdxd");
+
+            },(duracionInicio * 2) + 4000 + (n) * duracionTransiciones)
         }
         return c;
     }

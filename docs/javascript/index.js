@@ -65,7 +65,7 @@ play.addEventListener('click', () => {
         modal.show()
         animacion(mA,mB,principal);
     } else {
-        alert("Aún no puede hacer uso de este boton, haga la multiplicación e intente de nuevo")
+        alert("Aún no puede hacer uso de este boton para visualizar la animación, presione MULTIPLICAR e intente de nuevo")
         result = null;
     }
 })

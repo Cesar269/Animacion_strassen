@@ -2,13 +2,14 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
   flex-wrap: wrap;
 }
 
 .prueba,.prueba2,.prueba3,.principal{
   width: 25%;
   text-align: center;
-  height: 20%; 
+  /* height: 25%;  */
   background-color: white;
   border: solid;
   border: 1px solid black;
@@ -58,7 +59,7 @@
 } */
 .mas,.menos,.por,.igual,.M,.C,.mas2,.menos2,.igual2{
   font-weight:bold;
-  font-size: 4vw;
+  font-size: 3.5vw;
   text-shadow: 0px 2px 2px rgb(131, 127, 127);
 }
 .mas,.mas2{
@@ -77,4 +78,15 @@
   position: absolute;
   top:250px;
   right:75px;
+}
+.bloque{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.minititulo,.minititulo2{
+  font-size: 13px;
+  margin: 0px 0px -10px 0px;
+  padding: 0px;
 }

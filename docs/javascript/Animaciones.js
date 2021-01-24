@@ -1,4 +1,11 @@
-import { aparecerOperaciones, aparicionTabla, aparicionTexto, desaparecerOperaciones, desaparecerTabla, desaparecerTexto, gsapSuma1,animacionImportancia } from "./gsapAnimaciones.js"
+import { aparecerOperaciones, aparicionTabla, aparicionTexto, desaparecerOperaciones, desaparecerTabla, desaparecerTexto, gsapSuma1,animacionImportancia, subTabla } from "./gsapAnimaciones.js"
+const subtabla1 = document.querySelector(".subtabla1")
+const tituloPrincipal = document.querySelector(".tituloPrincipal")
+const subtitulo1 = document.querySelector(".subtitulo1");
+const subtitulo2 = document.querySelector(".subtitulo2");
+const subtitulo3 = document.querySelector(".subtitulo3");
+const subtabla2 = document.querySelector(".subtabla2")
+const subtabla3 = document.querySelector(".subtabla3")
 const elGuia = document.querySelector(".guia")
 const seccionQ = document.querySelectorAll(".q")
 const seccionC = document.querySelectorAll(".c")
@@ -46,6 +53,8 @@ const nodoq72 = document.querySelectorAll(".q72")
 const mas2 = document.querySelectorAll(".mas2")
 const menos2 = document.querySelectorAll(".menos2")
 const igual2 = document.querySelectorAll(".igual2")
+const minititulo = document.querySelectorAll(".minititulo")
+const minititulo2 = document.querySelectorAll(".minititulo2")
 
 const posicionC = document.querySelector(".fijo");
 const referencia = document.querySelector(".referencia")
@@ -73,7 +82,6 @@ const aparicionTablaDOM = (nodo, matrizObjeto) => {
             newTr.appendChild(newtd);
         }
     }
-
 }
 //////////////////////////////////////////////////////
 export const animacionTablas = (nodo, matrizObjeto, duracion) => {
@@ -101,6 +109,7 @@ const aparicionTablasDOM = (nodos, matrizObjeto) => {
             }
         }
     });
+    
 
 }
 const receteoNodos = (nodos) => {
@@ -122,14 +131,28 @@ export const intro = (principal, a, b, texto, duracionIntro) => {
     seccionQ.forEach((nodo)=>{
         nodo.style.opacity = 0;
     })
-    
+    subtabla1.style.opacity = 0;
+    subtabla2.style.opacity = 0;
+    subtabla3.style.opacity = 0;
     guia(texto, (duracionIntro * 2) + 1000);
     animacionTabla(principal, a, duracionIntro);
+    tituloPrincipal.textContent = `Matriz [ A ] de ${a.columnas}x${a.columnas}`
+    aparicionTexto(tituloPrincipal);
+    divisionTabla(a,duracionIntro,principal);
+    
+    
     setTimeout(() => {
+        tituloPrincipal.textContent=`Matriz [ B ] de ${a.columnas}x${a.columnas}`
         animacionTabla(principal, b, duracionIntro);
+        animacionImportancia(tituloPrincipal);
+        divisionTabla(b,duracionIntro,principal);
     }, duracionIntro + 2000)
     setTimeout(() => {
-        receteoNodo(principal)
+        receteoNodo(principal);
+        receteoNodo(subtabla1);
+        receteoNodo(subtabla2);
+        receteoNodo(subtabla3);
+        receteoNodo(tituloPrincipal);
     }, (duracionIntro * 2) + 4000)
 }
 
@@ -140,6 +163,60 @@ const guia = (texto, duracion) => {
         desaparecerTexto(elGuia);
     }, duracion-2000);
 }
+const divisionTabla = (a,duracionIntro,principal)=>{
+    if(a.columnas == 2){
+        aparicionSubTablaDOM(a,subtabla1,a.columnas/2);
+        subtitulo1.style.opacity = 0;
+        subtitulo1.textContent = `[${a.columnas/2}]x[${a.columnas/2}]`
+        subTabla(principal,subtabla1,1,true,subtitulo1);
+
+    }
+    else if(a.columnas == 4){
+        aparicionSubTablaDOM(a,subtabla1,a.columnas/2)
+        aparicionSubTablaDOM(a,subtabla2,(a.columnas/2)/2)
+        subtitulo1.style.opacity = 0;
+        subtitulo1.textContent = `[${a.columnas/2}]x[${a.columnas/2}]`
+        subtitulo2.style.opacity = 0;
+        subtitulo2.textContent = `[${(a.columnas/2)/2}]x[${(a.columnas/2)/2}]`
+        subTabla(principal,subtabla1,1,true,subtitulo1);
+        subTabla(principal,subtabla2,2,true,subtitulo2);
+    }
+    else{
+        aparicionSubTablaDOM(a,subtabla1,a.columnas/2)
+        aparicionSubTablaDOM(a,subtabla2,(a.columnas/2)/2)
+        aparicionSubTablaDOM(a,subtabla3,((a.columnas/2)/2)/2)
+        subtitulo1.style.opacity = 0;
+        subtitulo1.textContent = `[${a.columnas/2}]x[${a.columnas/2}]`
+        subtitulo2.style.opacity = 0;
+        subtitulo2.textContent = `[${(a.columnas/2)/2}]x[${(a.columnas/2)/2}]`
+        subtitulo3.style.opacity = 0;
+        subtitulo3.textContent = `[${((a.columnas/2)/2)/2}]x[${((a.columnas/2)/2)/2}]`
+        subTabla(principal,subtabla1,1,true,subtitulo1);
+        subTabla(principal,subtabla2,2,true,subtitulo2);
+        subTabla(principal,subtabla3,3,true,subtitulo3);
+    }
+
+    setTimeout(()=>{
+        subTabla(principal,subtabla3,3,false,subtitulo3)
+        subTabla(principal,subtabla2,2,false,subtitulo2)
+        subTabla(principal,subtabla1,1,false,subtitulo1)
+    },duracionIntro-2000)
+}   
+
+const aparicionSubTablaDOM = (matrizObjeto,nodo,n) => {
+    const matriz = matrizObjeto.matriz;
+    receteoNodo(nodo);
+    for (let i = 0; i < n; i++) {
+        let newTr = document.createElement("tr");
+        nodo.appendChild(newTr)
+        for (let j = 0; j < n; j++) {
+            let newtd = document.createElement("td")
+            newtd.textContent = matriz[i][j];
+            newTr.appendChild(newtd);
+        }
+    }
+}
+
 
 const receteoNodo = (nodo) => {
 
@@ -197,6 +274,7 @@ export const superAnimacion = (a11, a12, a21, a22, b11, b12, b21, b22, q1, q2, q
         mostrarOperaciones(por, duracion);
         mostrarOperaciones(igual, duracion);
         mostrarOperaciones(M, duracion);
+        mostrarOperaciones(minititulo,duracion);
 
     }, timer)//en que tiempo empieza
     setTimeout(() => {
@@ -239,41 +317,17 @@ export const superAnimacion = (a11, a12, a21, a22, b11, b12, b21, b22, q1, q2, q
         mostrarOperaciones(menos2, duracion);
         mostrarOperaciones(igual2, duracion);
         mostrarOperaciones(C, duracion);
+        mostrarOperaciones(minititulo2,duracion)
         
     }, timer+duracion)//en que tiempo empieza
 
 }
-
 const mostrarOperaciones = (nodo, duracion) => {
     aparecerOperaciones(nodo);
     setTimeout(() => {
         desaparecerOperaciones(nodo);
     }, duracion - 1500)
 }
-
-// ///////////////////////////////////////////////////
-// export const desaparecerInicio = ()=>{
-//     desaparecerTabla(nodoa11);
-//     desaparecerTabla(nodoa12)
-//     desaparecerTabla(nodoa21)
-//     desaparecerTabla(nodoa22)
-
-//     desaparecerTabla(nodob11)
-//     desaparecerTabla(nodob12)
-//     desaparecerTabla(nodob21)
-//     desaparecerTabla(nodob22)
-
-//     desaparecerTabla(nodoq1)
-//     desaparecerTabla(nodoq2)
-//     desaparecerTabla(nodoq3)
-//     desaparecerTabla(nodoq4)
-//     desaparecerTabla(nodoq5)
-//     desaparecerTabla(nodoq6)
-//     desaparecerTabla(nodoq7)
-
-//     desaparecerOperaciones(mas)
-//     desaparecerOperaciones(menos)
-//     desaparecerOperaciones(por)
-//     desaparecerOperaciones(igual)
-// }
-//////////////////////////////////////////////////
+export const despedida = ()=>{
+    
+}
