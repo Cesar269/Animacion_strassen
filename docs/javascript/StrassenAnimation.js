@@ -156,7 +156,7 @@ export default class StrassenAnimation {
         let c = new Matriz(size, size);
         let guia = "";
         let duracionInicio = 8000;
-        let duracionTransiciones = 12000;
+        let duracionTransiciones = 16000;
         //cantidad de animaciones
         let numeroTransiciones = 0;
 
