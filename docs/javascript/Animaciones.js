@@ -1,4 +1,4 @@
-import { aparecerOperaciones, aparicionTabla, aparicionTexto, desaparecerOperaciones, desaparecerTabla, desaparecerTexto, gsapSuma1,animacionImportancia, subTabla } from "./gsapAnimaciones.js"
+import { aparecerOperaciones, aparicionTabla, aparicionTexto, desaparecerOperaciones, desaparecerTabla, desaparecerTexto, gsapSuma1,animacionImportancia, subTabla, construir } from "./gsapAnimaciones.js"
 const subtabla1 = document.querySelector(".subtabla1")
 const tituloPrincipal = document.querySelector(".tituloPrincipal")
 const subtitulo1 = document.querySelector(".subtitulo1");
@@ -58,6 +58,8 @@ const minititulo2 = document.querySelectorAll(".minititulo2")
 
 const posicionC = document.querySelector(".fijo");
 const referencia = document.querySelector(".referencia")
+const finalboos = document.querySelector(".finalboos")
+const principal = document.querySelector(".principal")
 /////////////////////////////////////////////////////////
 export const animacionTabla = (nodo, matrizObjeto, duracion) => {
     aparicionTablaDOM(nodo, matrizObjeto);
@@ -286,10 +288,10 @@ export const superAnimacion = (a11, a12, a21, a22, b11, b12, b21, b22, q1, q2, q
         posicionC.style.bottom = `${referencia.getBoundingClientRect().bottom}px`
         posicionC.style.right = `${referencia.getBoundingClientRect().right}px`;
         if(q1.filas == 1){
-            guia("Apartir de estos resultados vamos creando la matriz resutante de esta iteración",duracion)
+            guia("Apartir de estos resultados vamos creando la matriz resutante de esta iteración haciendo uso de las C's obtenidas",duracion)
         }
         else{
-            guia("Obtenemos los resultados necesarios para el resultado de esta iteración",duracion)
+            guia("Obtenemos los resultados necesarios para el resultado de esta iteración obteniendo primero los M's y luego las C's que nos llevarán a la construcción de esta iteración",duracion)
         }
         sm.forEach((x)=>{
             x.style.color = "black"
@@ -328,6 +330,41 @@ const mostrarOperaciones = (nodo, duracion) => {
         desaparecerOperaciones(nodo);
     }, duracion - 1500)
 }
-export const despedida = ()=>{
-    
+export const despedida = (final)=>{
+    elGuia.textContent=`El metodo strassen como verás puede ser más largo para una persona, 
+    sin embargo para una computadora es más sencillo hacer sumas y restas. Por eso el metodo strassen reduce en gran medida el uso
+    de la multiplicación para llegar al resultado correcto.`;
+    aparicionTexto(elGuia);
+    tituloPrincipal.textContent = `Cada que se ocupa multiplicar y estas no son de dimesión 1, se aplica de nuevo strassen y pasa a ser una matriz divida en 4 partes siendo
+    ahora 4 matrices con dimensión de n/2 en columnas y n/2 filas.`;
+    aparicionTexto(tituloPrincipal);
+    animacionTabla(principal,final,100000);
+    tituloPrincipal.style.fontSize = "18px"
+    tituloPrincipal.style.fontSize = "15px"
+
+}
+export const contruccion=(tiempo)=>{
+    setTimeout(()=>{
+        nodoc11.forEach((nodo)=>{
+            nodo.style.color = "red"
+            nodo.style.fontWeight = 600;
+        })
+        nodoc12.forEach((nodo)=>{
+            nodo.style.color = "red"
+            nodo.style.fontWeight = 600;
+        })
+        nodoc21.forEach((nodo)=>{
+            nodo.style.color = "red"
+            nodo.style.fontWeight = 600;
+        })
+        nodoc22.forEach((nodo)=>{
+            nodo.style.color = "red"
+            nodo.style.fontWeight = 600;
+        })
+        animacionImportancia(nodoc11);
+        animacionImportancia(nodoc12);
+        animacionImportancia(nodoc21);
+        animacionImportancia(nodoc22);     
+        construir(nodoc11,nodoc12,nodoc21,nodoc22);
+    },tiempo-3000)
 }

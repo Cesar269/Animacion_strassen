@@ -1,6 +1,6 @@
 import Matriz from "./Matriz.js";
 // import {intro} from "./acciones.js"
-import { intro, superAnimacion } from "./Animaciones.js";
+import { contruccion, despedida, intro, superAnimacion } from "./Animaciones.js";
 
 export default class StrassenAnimation {
 
@@ -156,7 +156,7 @@ export default class StrassenAnimation {
         let c = new Matriz(size, size);
         let guia = "";
         let duracionInicio = 8000;
-        let duracionTransiciones = 10000;
+        let duracionTransiciones = 12000;
         //cantidad de animaciones
         let numeroTransiciones = 0;
 
@@ -174,13 +174,17 @@ export default class StrassenAnimation {
             a = this.fillPowerOfTwo(a);
             b = this.fillPowerOfTwo(b);
             // recursion
-            guia = "Estas son las matrices iniciales que se dividirán de mitad en mitad cada que la operación sea una multiplicación y estas sean de tamaño mayor a 1"
+            guia = "Estas son las matrices iniciales (llenadas con 0 para que sean potencia de 2) que se dividirán de mitad en mitad cada que la operación sea una multiplicación y estas sean de tamaño mayor a 1"
             intro(principal, a, b, guia, duracionInicio);
-            c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * 10000, 10000);
+            c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * duracionTransiciones, duracionTransiciones);
 
 
             // remueve los ceros de la matriz
             this.reshape(c, size);
+            contruccion((duracionInicio * 2) + 4000 + (n) * duracionTransiciones)
+            setTimeout(() => {
+                despedida(c);
+            }, (duracionInicio * 2) + 4000 + (n) * duracionTransiciones)
         }
         else {
             let n = Math.floor(Math.log2(size));
@@ -193,10 +197,10 @@ export default class StrassenAnimation {
             guia = "Estas son las matrices iniciales que se dividirán de mitad en mitad cada que la operación sea una multiplicación y estas sean de tamaño mayor a 1";
             intro(principal, a, b, guia, duracionInicio);
             c = this.multiply(a, b, (duracionInicio * 2) + 4000 + (n) * duracionTransiciones, duracionTransiciones);
-            setTimeout(()=>{
-                console.log("termine xdxd");
-
-            },(duracionInicio * 2) + 4000 + (n) * duracionTransiciones)
+            contruccion((duracionInicio * 2) + 4000 + (n) * duracionTransiciones)
+            setTimeout(() => {
+                despedida(c);
+            }, (duracionInicio * 2) + 4000 + (n) * duracionTransiciones)
         }
         return c;
     }

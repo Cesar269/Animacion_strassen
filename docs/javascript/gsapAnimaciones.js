@@ -50,6 +50,12 @@ export const subTabla = (principal, nodo, orden, isAparecer,subtitulo) => {
     }
 
 }
+export const construir = (c11,c12,c21,c22)=>{
+    gsap.fromTo(c11,{x:0,y:0},{x:0,y:-150,duration:2});
+    gsap.fromTo(c12,{x:0,y:0},{x:0,y:-200,duration:2});
+    gsap.fromTo(c21,{x:0,y:0},{x:0,y:-400,duration:2});
+    gsap.fromTo(c22,{x:0,y:0},{x:0,y:-400,duration:2});
+}
 // export const animarSubtablas1 = (original) =>{
 //     gsap.fromTo(original,{opacity:0},{duration:1,x:500,y:0,opacity:1})
 // }
