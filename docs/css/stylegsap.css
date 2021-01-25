@@ -63,7 +63,7 @@
   text-shadow: 0px 2px 2px rgb(131, 127, 127);
 }
 .mas,.mas2{
-  color: brown;
+  color: rgb(165, 21, 21);
 }
 .menos,.menos2{
   color: blue;
@@ -72,7 +72,7 @@
   color: green;
 }
 .igual,.igual2{
-  color: blueviolet;
+  color: rgb(116, 1, 224);
 }
 .fijo{
   position: absolute;

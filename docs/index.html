@@ -30,9 +30,10 @@
     <!-- Alert de arreglo -->
     <div class="alert alert-danger my-3 mx-3" role="alert">
         <b>RECUERDA</b> que las dimensiones de la matriz A y B deben ser las mismas.
-        En caso de que tus matrices no sea exponencial de base 2 (ej. 2, 4, 8, 16, 32...) 
-        <b>OBSERVARÁS</b> como se llena de ceros para tener las dimensión correcta
+        En caso de que tus matrices no sea exponencial de base 2 (ej. 2, 4, 8, 16, 32...)
+        <b>OBSERVARÁS</b> como se llena de ceros para tener las dimensión correcta.
     </div>
+
 
     <div class="container mt-5">
         <div class="row">
@@ -48,6 +49,7 @@
         <button class="generar">Crear matriz</button>
         <button class="aleatorio">Llenar random</button>
         <button class="start">Multiplicar matrices</button>
+        <button type="button" id="verInfomacion">Plantamiento y solución</button>
     </div>
 
     <!-- seccion de cambio de las matrices A y B -->
@@ -78,7 +80,7 @@
 
     <!-- Seccion de produccion para visualizar el procedimiento -->
 
-    <button type="button" id="play">Observar solución ( Diviertete :D )</button>
+    <button type="button" id="play">Observar solución (Animación)</button>
     <!-- Full screen modal -->
     <div class="modal fade" id="superModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
@@ -110,7 +112,7 @@
                             <p class="sc"> C22 = M1-M2+M3+M6</p>
                         </span>
                     </div>
-                
+
                     <h3 class="guia mt-3"></h3>
                     <div class="animacion container mt-2">
                         <div class="bloque">
@@ -120,17 +122,17 @@
                         </div>
                         <div class="bloque">
                             <h5 class="subtitulo1"></h5>
-                            <table class="subtablas subtabla1 nueve">                               
+                            <table class="subtablas subtabla1 nueve">
                             </table>
                         </div>
-                        <div class="bloque">     
-                            <h5 class="subtitulo2"></h5>                      
-                            <table class="subtablas subtabla2 nueve">       
+                        <div class="bloque">
+                            <h5 class="subtitulo2"></h5>
+                            <table class="subtablas subtabla2 nueve">
                             </table>
                         </div>
-                        <div class="bloque">             
-                            <h5 class="subtitulo3"></h5>             
-                            <table class="subtablas subtabla3 nueve">   
+                        <div class="bloque">
+                            <h5 class="subtitulo3"></h5>
+                            <table class="subtablas subtabla3 nueve">
                             </table>
                         </div>
                     </div>
@@ -305,7 +307,7 @@
                             </div>
                         </div>
                         <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-                       
+
                     </div>
                     <div class="secondAnimation container fijo">
                         <div class="c">
@@ -334,7 +336,7 @@
                                 <p class="minititulo2">[C11]</p>
                                 <table class="c11 nueve"></table>
                             </div>
-                        </div>       
+                        </div>
                         <div class="c">
                             <span class="C">C12 = </span>
                             <div class="bloque">
@@ -400,9 +402,9 @@
                     <div class="conclusion">
                         <table class="finalboos"></table>
                     </div>
-                              
 
-                
+
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar animación</button>
@@ -412,6 +414,122 @@
     </div>
 
     <!-- modallllll -->
+    <!-- Segundo modal de procedimiento scrollable -->
+    <div class="modal fade" id="informacion" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <!-- Scrollable modal -->
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Descripción del Problema y solución</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>El algoritmo de Strassen mejora tan sólo levemente la complejidad del primer algoritmo recursivo
+                        para multiplicación de matrices. La combinación de las sub-soluciones las lleva a cabo de
+                        exactamente igual forma, y ya veremos que en esencia lleva a cabo exactamente el mismo
+                        procedimiento
+                        a la hora de hallar las soluciones de cada uno de los subproblemas en cada nivel de
+                        recursividad.</p>
+                    <p>
+                        La clave reside en que Strassen se las arregló para tener que llevar a cabo tan solo siete
+                        productos de
+                        matrices para resolver cada subproblema, mientras que el primer algoritmo recursivo debía
+                        realizar
+                        ocho productos.
+                    </p>
+                    <p>
+                        Veamos primero el procedimiento de multiplicación:
+                        Como vemos, entran en juego unas matrices P1−7P1−7 que no habíamos visto hasta ahora. En
+                        principio,
+                        la definición de estas matrices implica cada una un producto de sub-matrices desde la A hasta la
+                        H.
+                    </p>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item elemento">P1 = A * (F - H)</li>
+                        <li class="list-group-item elemento">P2 = (A + B) * H</li>
+                        <li class="list-group-item elemento">P3 = (C + D) * E</li>
+                        <li class="list-group-item elemento">P4 = D * (G - E)</li>
+                        <li class="list-group-item elemento">P5 = (A + D) * (E + H)</li>
+                        <li class="list-group-item elemento">P6 = (B - D) * (G + H)</li>
+                        <li class="list-group-item elemento">P7 = (A – C) * (E + F)</li>
+                    </ul>
+                    <p>
+                        Aquí tenemos los siete productos que realiza el algoritmo de Strassen para resolver cada
+                        subproblema. La pregunta ahora está en su procedencia. Lo cierto es que esta no es para nada
+                        trivial, pero efectivamente, si llevamos a cabo las sustituciones pertinentes, veremos cómo la
+                        secuencia de sumas y restas que se llevan a cabo con las sub matrices P1−7P1−7 equivale a las
+                        distintas sumas de productos que utilizaba el primer algoritmo recursivo.
+                    </p>
+                    Veamos un ejemplo:
+                    <br>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item elemento">P5+P4−P2+P6=(A+D)∗(E+H)+D∗(G−E)−H∗(A+B)+(B−D)∗(G+H)</li>
+                        <li class="list-group-item elemento">P5+P4−P2+P6=(A+D)∗(E+H)+D∗(G−E)−H∗(A+B)+(B−D)∗(G+H) /li>
+                        <li class="list-group-item elemento">AE+AH+DE+DH+DG−DE−HA−HB+BG−BH−DG−DH=AE+BG </li>
+                     
+                    </ul>
+                   
+                    <p>
+                        Como podemos ver, el producto de sumas que el primer algoritmo recursivo coloca en el cuadrante
+                        superior izquierdo de la matriz resultado. tiene exactamente el mismo valor que la operación con
+                        las
+                        matrices Pi. Y si llevamos a cabo la comprobación para los otros tres cuadrantes, veríamos que
+                        también son equivalentes.
+                    </p>
+                    <h5>
+                        <b>
+                            Recurrencia.
+                        </b>
+                    </h5> 
+                    <p>
+                        A continuación, vamos a analizar el algoritmo de Strassen para averiguar exactamente en qué
+                        medida
+                        mejora al algoritmo tradicional y al primer algoritmo recursivo. Comenzando con la recurrencia,
+                        sabemos que, para cada problema, debemos llevar a cabo siete productos.
+                    </p>
+                    <p>
+                        Es decir que, de cada problema, van a surgir siempre ocho subproblemas. El tiempo necesario para
+                        "generar" estos
+                        subproblemas, es decir, para dividir las matrices, lo consideraremos constante (Θ(1)).
+                        Nos queda saber el tiempo necesario para fusionar las soluciones parciales (sub matrices) para
+                        generar una solución mayor.
+                    </p>
+                    <p>
+                        Si consultamos el pseudocódigo, veremos cómo el procedimiento fusionar
+                        es fundamental en este algoritmo, como ya lo era en el primer algoritmo recursivo. Puesto que el
+                        procedimiento aquí es exactamente el mismo que entonces, su complejidad sigue siendo
+                        proporcional al
+                        número de entradas de la matriz, es decir, (Θ(n^2)).
+                    </p>
+                    <p>
+                        Sabiendo todo esto, y que los casos base tratan simplemente de multiplicar, sumar y restar
+                        números,
+                        y no matrices, podemos formar la fórmula de recurrencia del algoritmo de Strassen:
+                        Número de subproblemas por cada problema: a = 7.
+                        Tamaño de cada subproblema: b = n/2.
+                    </p>
+                    <p>
+
+                        Tiempo invertido en dividir las matrices: D(n) = Θ(1). Esto es despreciable frente a C(n).
+                        Tiempo invertido en fusionar las sub matrices: C(n) = Θ(n^2).
+                    </p>
+                    <p>
+                        Por el método maestro, podríamos concluir de inmediato que la complejidad de este algoritmo es
+                        sub
+                        cúbica. El valor de a (7) es mayor que el valor de b^d(2^2=4), y por tanto estamos ante el
+                        tercer
+                        caso que contempla el método maestro. La complejidad de este algoritmo es Θ(n^(〖log〗_2 7)).
+                        Puesto
+                        que el valor del 〖log〗_2 7 está entre 2.80 y 2.81, concluimos que la complejidad es Θ(n^2.81).
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- fin modal -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
         crossorigin="anonymous"></script>

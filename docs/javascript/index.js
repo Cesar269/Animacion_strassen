@@ -11,6 +11,8 @@ const generar = document.querySelector(".generar")
 const aleatorio = document.querySelector(".aleatorio");
 const play = document.querySelector('#play');
 const modal = new bootstrap.Modal(document.querySelector('#superModal'))
+const verInformacion = document.querySelector("#verInfomacion")
+const informacion = new bootstrap.Modal(document.querySelector('#informacion'))
 const prueba1 = document.querySelector(".prueba")
 const prueba2 = document.querySelector(".prueba2")
 const prueba3 = document.querySelector(".prueba3")
@@ -63,10 +65,13 @@ resolver.addEventListener('click', () => {
 play.addEventListener('click', () => {
     if (result) {
         modal.show()
-        animacion(mA,mB,principal);
+        animacion(mA, mB, principal);
     } else {
         alert("Aún no puede hacer uso de este boton para visualizar la animación, presione MULTIPLICAR e intente de nuevo")
         result = null;
     }
 })
 
+verInformacion.addEventListener('click', () => {
+    informacion.show();
+})
